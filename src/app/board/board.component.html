@@ -1,0 +1,13 @@
+<div class="board" (click)="startByTouch()">
+    <div *ngIf="(gameState | async) == gameStateEnum.beforeGame; else board;" class="board-start-veil">
+        Aby rozpocząć naciśnij spację lub&nbsp;dotknij planszę
+    </div>
+    <div *ngIf="(gameState | async) == gameStateEnum.gameOver;" class="board-start-veil">
+        Koniec
+    </div>
+    <ng-template #board>
+        <div *ngFor="let item of (boardState | async)" [class.animation-start]="(item?.turn) == 0" class="board-small-box tile-{{item?.value}}"> <!-- .tile-2   .tile-fleeting -->
+            {{item?.value}}
+        </div>
+    </ng-template>
+</div>

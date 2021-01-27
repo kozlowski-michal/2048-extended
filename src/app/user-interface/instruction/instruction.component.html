@@ -1,0 +1,213 @@
+<p>
+    <button class="btn btn-outline-light info" (click)="open(content)">
+        <span class="fw-bold">i</span>
+    </button>
+</p>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Instrukcja</h4>
+        <button type="button" class="close btn" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="accordion accordion-flush" id="accordionRules">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button 
+                        class="accordion-button collapsed" 
+                        type="button" 
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" 
+                        aria-expanded="false" 
+                        aria-controls="flush-collapseOne"
+                        ngbAutofocus 
+                    >
+                        Zasady
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionRules">
+                    <div class="accordion-body">
+                        <p>
+                            Zasady rozszerzonej wersji gry <span class="fw-bold"> 2048 </span> są takie same jak oryginalnej.
+                            Używając strzałek przesuwaj kafelki. Kafelki z tą samą liczbą łączą się.
+                            Suma z obu kafelków tworzy nowy kafelek.
+                        </p>
+                        <p>
+                            W wersji rozszerzonej jest więcej typów kafelków o różnym zachwaniu. 
+                            Gracz posiada swój poziom, który zwiększa się wraz ze zdobywanym doświadczeniem.
+                            Nowością jest także moc specjalna, pozwalająca wyjść z ciężkiej sytuacji.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button 
+                        class="accordion-button collapsed" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#flush-collapseTwo" 
+                        aria-expanded="false" 
+                        aria-controls="flush-collapseTwo"
+                    >
+                        Sterowanie
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionRules">
+                    <div class="accordion-body">
+                        <p>
+                            Strzałki:
+                            <span class="fw-bold"> lewo, prawo, góra, dół </span>
+                            przesuwają wszystkie kafelki w wybranym kierunku.
+                        </p>
+                        <p>
+                            <span class="fw-bold"> Spacja </span>
+                            pozwala uruchomić moc specjalną, gdy ta jest aktywna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button 
+                        class="accordion-button collapsed" 
+                        type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#flush-collapseThree" 
+                        aria-expanded="false" 
+                        aria-controls="flush-collapseThree"
+                    >
+                        Poziom i moc specjalna
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionRules">
+                    <div class="accordion-body">
+                        <p>
+                            <span class="fw-bold">Poziom gracza</span> określa, jaka liczba może pojawić się na nowym kaflu. 
+                            Im wyższy poziom, tym liczby z nowych kafli mogą być większe, a czasem naprawdę duże.
+                            Jednak zawsze liczba 2 ma co najmniej 50% szans na pojawienie się.
+                            Poziom zwiększa się gdy gracz osiągnie określoną ilość doświadczenia, pokazaną za pomocą pasku postępu.
+                            Doświadczenie jest zdobywane za każde połączenie kafli, a maksymalny poziom to 15.
+                        </p>
+                        <p>
+                            <span class="fw-bold">Moc specjalna</span> pozwala wyjść z ciężkiej sytuacji. Aby ją aktywować naciśnij
+                            <span class="fw-bold"> spację </span> kiedy pasek mocy zostanie naładowany. Aktywacja niszczy losowy kafel o najniższej liczbie.
+                            Na wyżyszch poziomach może zniszczyć więcej kafli, większe liczby, a także szybciej się ładuje.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button 
+                        class="accordion-button collapsed" 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#flush-collapseFour"
+                        aria-expanded="false" 
+                        aria-controls="flush-collapseFour"
+                    >
+                        Kafle
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionRules">
+                    <div class="accordion-body">
+
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4">16</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <span class="fw-bold"> Zwykły kafelek. </span>    
+                                Łączy się z innym kafelkiem z tą samą liczbą.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-jumper">16</div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold">Skoczek. </span> 
+                                Może przeskoczyć inne kafelki, jeśli za nimi znajduje się kafelek, z którym może się połączyć.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-heavy">16</div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold">Żółw. </span> 
+                                Porusza się maksymalnie o jedno pole. Łączy się z innym kafelkiem z tą samą liczbą.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-immobile">16</div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold">Grubas Walaszek. </span> 
+                                Zbyt ciężki by się poruszać. Łączy się z innym kaflem z tą samą liczbą dopiero, gdy ten na niego wpadnie.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-destroyer"></div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold"> Niszczyciel. </span>
+                                Niszczy kafelek w kóry trafi. Porusza się tylko o jedno pole. Gracz otrzymuje punkty za zniszczony kafelek.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-fleeting">
+                                        16
+                                        <div class="points-info">10</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold">Ulotny. </span> 
+                                Znika po 1 kolejce. Daje 10 razy więcej punktów za połączenie.
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <div class="example-board">
+                                    <div class="example-box tile-4 tile-valuable">
+                                        16
+                                        <div class="points-info">5</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">    
+                                <span class="fw-bold">Cenny. </span> 
+                                Daje więcej punktów za połączenie. Mnożnik punktów spada za każdy ruch bez połączenia.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>               
+        </div> 
+    </div>
+</ng-template>
+  

@@ -1,0 +1,89 @@
+@import "../data/colors"
+@import "../data/tiles"
+
+$board-size: min( calc(100vw - 1.5rem), 500px)
+$box-margin: 2px
+$box-padding: $box-margin
+$box-size: calc( #{$board-size} * 0.25 - #{$box-margin * 2} -  #{$box-padding * 0.5} )
+$box-move: calc( #{$board-size} * 0.25 - #{$box-padding * 0.5} )
+$animation-show-time: 0.5s
+    
+@keyframes show-tile
+    from 
+        transform: scale(0)
+    to
+        transform: scale(1)
+
+@keyframes move-tile-up
+    100%
+        transform: translateY( calc( #{$box-move} * -1 ) )
+
+@keyframes move-tile-down
+    100%
+        transform: translateY( calc( #{$box-move} ) )     
+
+@keyframes move-tile-left
+    100%
+        transform: translateX( calc( #{$box-move} * -1 ) )    
+
+@keyframes move-tile-right
+    100%
+        transform: translateX( calc( #{$box-move} ) )       
+
+.board
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    width: $board-size
+    height: $board-size
+    position: relative
+    margin: 1em 0
+    padding: $box-padding
+    display: flex
+    background: $secondary
+    font-size: 2em
+    font-weight: bold
+    color: $dark
+
+.board-small-box
+    display: flex
+    justify-content: center
+    align-items: center
+    height: $box-size
+    width: $box-size
+    border-radius: 6px
+    margin: $box-margin
+    word-break: break-all
+
+.animation-start
+    animation-name: show-tile
+    animation-duration: $animation-show-time
+    animation-fill-mode: forwards
+
+.board-start-veil
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background: $light
+    color: $primary
+    z-index: 13
+
+.start-info
+    margin: auto
+
+.move-up
+    animation-name: move-tile-up
+.move-down
+    animation-name: move-tile-down
+.move-left
+    animation-name: move-tile-left
+.move-right
+    animation-name: move-tile-right
+
